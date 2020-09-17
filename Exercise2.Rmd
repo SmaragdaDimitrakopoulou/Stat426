@@ -1,0 +1,62 @@
+---
+title: "Rmarkdown/KnitR exercise"
+author: "Smaragda Dimitrakopoulou"
+date: "17 September 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sampling 
+
+We are going to sample 100 values from a log-normal distribution with mean equal to *1* and standard deviation equal to *0.25* and save them in the vector **_data_**
+
+```{r Sampling}
+
+data<-rlnorm(100, meanlog = 1, sdlog =0.25 )
+
+```
+
+## Histogram
+
+The histogram of the 100 values is depicted below:
+
+```{r Histogram, fig.cap="Histogram of the values"}
+
+library(ggplot2)
+data=data.frame(data)
+ggplot(data=data,aes(x=data))  + geom_histogram(col="black",alpha=0.2,binwidth = 0.5)+labs(title="Histogram of the sampled values", x="Sampled Values", y="Frequency")
+
+
+```
+
+## Distribution on the log scale
+
+The histogram of the transformed in the _log scale_ values can be depicted below.  
+Note: the histogram is plotted also in the log scale.
+
+```{r  Log Histogram, fig.cap="Log-Histogram of the values"}
+
+ggplot(data=data,aes(x=log(data))) + scale_x_log10() + geom_histogram(col="black",alpha=0.2,binwidth = 0.05)+labs(title="Histogram of the log values", x="Log values in log scale", y="frequency")
+
+```
+
+## Mean and Variance of the Samples
+
+The mean value of the samples is:
+
+
+```{r  mean}
+mean(data$data)
+```
+
+The variance of the samples is:
+
+
+```{r  variance}
+var(data$data)
+```
+
+
