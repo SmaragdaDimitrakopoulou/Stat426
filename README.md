@@ -1,5 +1,5 @@
 # Stat426
-####Homework 1, _Exercise A_
+#### Homework 1, _Exercise A_
 
 In this exercise we will put a
 * web link
